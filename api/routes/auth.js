@@ -22,4 +22,44 @@ router.route("/register")
     });
 });
 
+//Login Routes
+router.route("/login")
+.get((req, res) => {
+    res.send("Got Login Page successfully");
+})
+
+.post((req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.redirect("/login");
+        }
+        req.logIn(user, (err) => {
+            if (err) {
+                return next(err);
+            }
+            if (req.session.redirectTo) {
+                const redirectTo = req.session.redirectTo;
+                delete req.session.redirectTo;
+                return res.redirect(redirectTo);
+            }
+            // return res.redirect("/");
+            return res.send("Successfully Logged In...")
+        });
+    })(req, res, next);
+});
+
+//Logout user
+router.route("/logout")
+.get((req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+    });
+    res.redirect("/login");
+});
+
 module.exports = router;
