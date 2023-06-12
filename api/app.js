@@ -10,6 +10,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User");
 const taskRoute = require("./routes/task");
 const authRoute = require("./routes/auth");
+const homeRoute = require("./routes/home");
 
 const port = 8000 || process.env.PORT;
 dotenv.config();
@@ -55,6 +56,7 @@ passport.deserializeUser(async (id, done) => {
 
 app.use("/api/task/", taskRoute);
 app.use("/api/auth/", authRoute);
+app.use("/api/home/", homeRoute);
 
 app.listen(port, () => {
     console.log(`Server listening on port: ${port}`);
