@@ -6,7 +6,7 @@ const User = require("../models/User");
 
 //Register Routes
 router.route("/register")
-.get((re, res) => {
+.get((req, res) => {
     res.send("Got the Register page!!!");
 })
 
