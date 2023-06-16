@@ -1,10 +1,8 @@
 import './home.css'
-import HomeNavbar from "../../components/homeNavbar/HomeNavbar";
 
 const Home = () => {
     return (
         <div>
-            <HomeNavbar />
             <div className="home pt-5">
                 <div className='d-flex justify-content-center align-items-center'>
                     <div className="container pt-5">
@@ -14,8 +12,12 @@ const Home = () => {
                                     <h1>Manage all your Tasks in a glance</h1>
                                     <p className='pb-2'>Let's you Plan, track and organize all your tasks with ease</p>
                                     <span className=''>
-                                        <button className='btn btn-lg btn-light btn-one'>Login</button>
-                                        <button className='btn btn-lg btn-dark mx-4'>Register</button>
+                                        <a href='/login'>
+                                            <button className='btn btn-lg btn-light btn-one'>Login</button>
+                                        </a>
+                                        <a href='/register'>
+                                            <button className='btn btn-lg btn-dark mx-4'>Register</button>
+                                        </a>
                                     </span>
                                 </div>
                             </div>
