@@ -1,8 +1,10 @@
+import HomeNavbar from '../../components/homeNavbar/HomeNavbar';
 import './home.css'
 
 const Home = () => {
     return (
         <div>
+            <HomeNavbar />
             <div className="home pt-5">
                 <div className='d-flex justify-content-center align-items-center'>
                     <div className="container pt-5">
