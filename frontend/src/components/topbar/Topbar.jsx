@@ -1,7 +1,13 @@
 import React from "react";
 import './topbar.css'
 import { Link } from "react-router-dom";
-import AddAlertIcon from '@mui/icons-material/AddAlert';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
+import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
+import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
+import EditCalendarOutlinedIcon from '@mui/icons-material/EditCalendarOutlined';
 
 
 const Topbar = () => {
@@ -15,7 +21,7 @@ const Topbar = () => {
                 </div>
                 <div className="topRight">
                     <div className="topbarIconContainer">
-                        <AddAlertIcon />
+                        <NotificationsNoneOutlinedIcon />
                         <span className="topIconBadge">2</span>
                     </div>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -35,22 +41,28 @@ const Topbar = () => {
                                 </Link>
                                 <div class="dropdown-divider"></div>
                                 <Link to="#" class="dropdown-item user-profile-text">
-                                    Tasks
+                                    <TaskOutlinedIcon />
+                                    <span className="px-2">Tasks</span>
                                 </Link>
                                 <Link to="#" class="dropdown-item user-profile-text">
-                                    Edit Task
+                                    <EditCalendarOutlinedIcon />
+                                    <span className="px-2">Edit Task</span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
-                                    Reminders
+                                    <NotificationsActiveOutlinedIcon />
+                                    <span className="px-2">Reminders</span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
-                                    Languages
+                                    <TranslateOutlinedIcon />
+                                    <span className="px-2">Language: English</span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
-                                    Enable dark theme
+                                    <ModeNightOutlinedIcon />
+                                    <span className="px-2">Enable dark theme</span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
-                                    Sign Out
+                                    <LogoutIcon />
+                                    <span className="px-2">Sign Out</span>
                                 </Link>
                             </div>
                         </li>
