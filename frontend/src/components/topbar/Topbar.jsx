@@ -7,7 +7,7 @@ import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
-import EditCalendarOutlinedIcon from '@mui/icons-material/EditCalendarOutlined';
+import TaskIcon from '@mui/icons-material/Task';
 
 
 const Topbar = () => {
@@ -16,7 +16,7 @@ const Topbar = () => {
             <div className="topbarWrapper">
                 <div className="topLeft">
                     <span className="logo">
-                        taskManager
+                        <TaskIcon />
                     </span>
                 </div>
                 <div className="topRight">
@@ -43,10 +43,6 @@ const Topbar = () => {
                                 <Link to="#" class="dropdown-item user-profile-text">
                                     <TaskOutlinedIcon />
                                     <span className="px-2">Tasks</span>
-                                </Link>
-                                <Link to="#" class="dropdown-item user-profile-text">
-                                    <EditCalendarOutlinedIcon />
-                                    <span className="px-2">Edit Task</span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
                                     <NotificationsActiveOutlinedIcon />

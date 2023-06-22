@@ -31,6 +31,14 @@ const Task = () => {
 		});
 	}
 
+	function deleteTask(id) {
+		setTasks(prevTasks => {
+			return prevTasks.filter((taskItem, index) => {
+				return index !== id;
+			});
+		});
+	}
+
   	return (
     	<>
 			<Topbar />
@@ -41,8 +49,16 @@ const Task = () => {
 				<h4 className='text-center'>{date}</h4>
 				<h5 className='text-center'>{time}</h5>
 			</div>
-			{tasks.map(taskItem => {
-				return <TaskCard title={taskItem.title} content={taskItem.content} />
+			{tasks.map((taskItem, index) => {
+				return (
+					<TaskCard 
+						key={index} 
+						id={index} 
+						title={taskItem.title} 
+						content={taskItem.content} 
+						onDelete={deleteTask} 
+					/>
+				)
 			})}
     	</>
   	)

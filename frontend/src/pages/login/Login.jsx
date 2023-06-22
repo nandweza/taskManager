@@ -49,7 +49,7 @@ const Login = ({ onLogin }) => {
                     <div className="form-group p-2">
                         <button 
                             type="submit"
-                            className="btn btn-lg btn-primary"
+                            className="btn btn-primary btn-block"
                             >
                             Log In
                         </button>
