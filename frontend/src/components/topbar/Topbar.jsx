@@ -60,7 +60,7 @@ const Topbar = () => {
                                     <ModeNightOutlinedIcon />
                                     <span className="px-2">Enable dark theme</span>
                                 </Link>
-                                <Link to="#" className="dropdown-item">
+                                <Link to="/" className="dropdown-item">
                                     <LogoutIcon />
                                     <span className="px-2">Sign Out</span>
                                 </Link>

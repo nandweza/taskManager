@@ -1,14 +1,14 @@
-import './tasks.css';
+import React from 'react';
+import './taskCard.css';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
-const Tasks = () => {
+const TaskCard = (props) => {
+
     return (
         <div className="tasks">
-            <h1 className='border-bottom'>Title</h1>
+            <h1 className='border-bottom'>{props.title}</h1>
             <ul>
-                <li>Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
+                <li>{props.content}</li>
             </ul>
             <button>
                 <DeleteOutlineOutlinedIcon />
@@ -17,4 +17,4 @@ const Tasks = () => {
     )
 };
 
-export default Tasks;
+export default TaskCard;
