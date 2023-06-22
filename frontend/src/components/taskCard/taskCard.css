@@ -4,8 +4,9 @@
     box-shadow: 0 2px 5px #ccc;
     padding: 10px;
     width: 240px;
-    margin: 16px;
+    margin: 16px 30px;
     float: left;
+
 }
 
 .tasks h1 {
