@@ -6,14 +6,14 @@ const Home = () => {
         <div>
             <HomeNavbar />
             <div className="home pt-5">
-                <div className='d-flex justify-content-center align-items-center'>
+                <div className='d-flex justify-content-center align-items-center h-100'>
                     <div className="container pt-5">
                         <div className='row'>
-                            <div className='col-lg-6'>
+                            <div className='col-lg-6 pt-5'>
                                 <div className='home-text text-left p-5'>    
-                                    <h1>Manage all your Tasks in a glance</h1>
+                                    <h1 className='pt-5'>Manage all your Tasks in a glance</h1>
                                     <p className='pb-2'>Let's you Plan, track and organize all your tasks with ease</p>
-                                    <span className=''>
+                                    <span className='home-btn'>
                                         <a href='/login'>
                                             <button className='btn btn-lg btn-light btn-one'>Login</button>
                                         </a>

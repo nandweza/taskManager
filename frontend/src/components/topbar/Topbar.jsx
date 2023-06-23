@@ -11,11 +11,12 @@ import TaskIcon from '@mui/icons-material/Task';
 
 
 const Topbar = () => {
+
     return (
         <div className="topbar border-bottom">
             <div className="topbarWrapper">
                 <div className="topLeft">
-                    <span className="logo">
+                    <span className="logo icons">
                         <TaskIcon />
                     </span>
                 </div>

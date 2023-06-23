@@ -1,10 +1,10 @@
-.topbar {
+.topbar { 
     position: sticky;
     top: 0;
     z-index: 999;
-    height: 70px;
+    height: 80px;
     background-color: whitesmoke;
-    padding: 0 32px;
+    padding: 0 50px;
     margin: auto -16px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
@@ -17,9 +17,9 @@
     justify-content: space-between;
 }
   
-.logo {
+.topbarWrapper .topLeft .icons {
     font-weight: bold;
-    font-size: 70px;
+    font-size: 10rem !important;
     color: darkblue;
     cursor: pointer;
 }
@@ -34,6 +34,7 @@
     cursor: pointer;
     margin-right: 10px;
     color: #555;
+    font-size: 2rem !important;
 }
 
 .topIconBadge{
@@ -56,4 +57,12 @@
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.dropdown-menu {
+    padding: 5px;
+}
+
+.dropdown-item {
+    font-size: 1.5rem;
 }

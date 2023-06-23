@@ -9,9 +9,9 @@ const Register = () => {
                 <form>
                     <div className="form-group p-2">
                         <input
-                            type="email"
+                            type="text"
                             className="form-control"
-                            placeholder="Email"
+                            placeholder="Username"
                             required
                         />
                     </div>
@@ -29,7 +29,7 @@ const Register = () => {
                         </button>
                     </div>
                 </form>
-                <div className="text-center py-2">
+                <div className="form-text text-center py-2">
                     Already a member? <a href="/login">Login here</a>
                 </div>
             </div>
