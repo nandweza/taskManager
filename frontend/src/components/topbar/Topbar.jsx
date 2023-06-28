@@ -1,13 +1,13 @@
 import React from "react";
 import './topbar.css'
 import { Link } from "react-router-dom";
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+// import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
-import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
-import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
-import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
+// import ModeNightOutlinedIcon from '@mui/icons-material/ModeNightOutlined';
+// import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
+// import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
-import TaskIcon from '@mui/icons-material/Task';
+// import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 
 
 const Topbar = () => {
@@ -16,15 +16,15 @@ const Topbar = () => {
         <div className="topbar border-bottom">
             <div className="topbarWrapper">
                 <div className="topLeft">
-                    <span className="logo icons">
-                        <TaskIcon />
+                    <span className="logo">
+                        taskManager
                     </span>
                 </div>
                 <div className="topRight">
-                    <div className="topbarIconContainer">
+                    {/* <div className="topbarIconContainer">
                         <NotificationsNoneOutlinedIcon />
                         <span className="topIconBadge">2</span>
-                    </div>
+                    </div> */}
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
                             <Link to='#' className="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,18 +45,21 @@ const Topbar = () => {
                                     <TaskOutlinedIcon />
                                     <span className="px-2">Tasks</span>
                                 </Link>
-                                <Link to="#" className="dropdown-item">
+                                {/* <Link to="#" className="dropdown-item">
                                     <NotificationsActiveOutlinedIcon />
                                     <span className="px-2">Reminders</span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
                                     <TranslateOutlinedIcon />
-                                    <span className="px-2">Language: English</span>
+                                    <span className="px-2">
+                                        Language: <em className="px-2">English</em>
+                                        <ArrowForwardIosOutlinedIcon />
+                                    </span>
                                 </Link>
                                 <Link to="#" className="dropdown-item">
                                     <ModeNightOutlinedIcon />
                                     <span className="px-2">Enable dark theme</span>
-                                </Link>
+                                </Link> */}
                                 <Link to="/" className="dropdown-item">
                                     <LogoutIcon />
                                     <span className="px-2">Sign Out</span>
