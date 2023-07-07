@@ -1,16 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const passport = require("passport");
 const User = require("../models/User");
 
+const passport = require("passport");
 
-//Register Routes
-router.route("/register")
-.get((req, res) => {
-    res.send("Got the Register page!!!");
-})
-
-.post((req, res) => {
+exports.registerUser = (req, res) => {
     User.register({ username: req.body.username }, req.body.password, (err, user) => {
         if(err) {
             res.status(500).send(err);
@@ -20,15 +12,9 @@ router.route("/register")
             });
         }
     });
-});
+}
 
-//Login Routes
-router.route("/login")
-.get((req, res) => {
-    res.send("Got Login Page successfully");
-})
-
-.post((req, res, next) => {
+exports.loginUser = (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
         if (err) {
             return next(err);
@@ -49,17 +35,13 @@ router.route("/login")
             return res.send("Successfully Logged In...")
         });
     })(req, res, next);
-});
+}
 
-//Logout user
-router.route("/logout")
-.get((req, res, next) => {
+exports.logoutUser = (req, res, next) => {
     req.logout((err) => {
         if (err) {
             return next(err);
         }
     });
     res.redirect("/login");
-});
-
-module.exports = router;
+}

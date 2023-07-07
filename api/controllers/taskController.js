@@ -1,12 +1,6 @@
-const express = require("express");
-const router = express.Router();
 const Task = require("../models/Task");
-const User = require("../models/User");
 
-
-//task routes
-router.route("/")
-.post(async (req, res) => {
+exports.createTask = async (req, res) => {
     if (req.user) {
         const newTask = new Task(req.body);
 
@@ -19,23 +13,35 @@ router.route("/")
     } else {
         res.status(403).json("You are not allowed");
     }
-})
+}
 
-.get(async (req, res) => {
+exports.getAllTasks = async (req, res) => {
     if (req.user) {
         try {
             const tasks = await Task.find().sort({ createdAt: -1 });
-            res.status(201).json(tasks); 
+            res.status(200).json(tasks); 
         } catch(err) {
             res.status(500).json(err);
         }
     } else {
         res.status(403).json("Not allowed");
     }
-});
+}
 
-router.route("/:id")
-.put(async (req, res) => {
+exports.getTask = async (req, res) => {
+    if (req.user) {
+        try {
+            const task = await Task.findById(req.params.id);
+            res.status(200).json(task);
+        } catch(err) {
+            res.status(500).json(err);
+        }
+    } else {
+        res.status(403).json("Not allowed");
+    }
+}
+
+exports.updateTask = async (req, res) => {
     if (req.user) {
         try {
             const updatedTask = await Task.findByIdAndUpdate(req.params.id, {
@@ -48,9 +54,9 @@ router.route("/:id")
     } else {
         res.status(403).json(" User not allowed");
     }
-})
+}
 
-.delete(async (req, res) => {
+exports.deleteTask = async (req, res) => {
     if (req.user) {
         try {
             await Task.findByIdAndDelete(req.params.id);
@@ -61,7 +67,4 @@ router.route("/:id")
     } else {
         res.status(403).json("User not allowed");
     }
-})
-
-module.exports = router;
-
+}

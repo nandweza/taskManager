@@ -2,19 +2,20 @@ const express = require("express");
 
 const app = express();
 
+const cors = require('cors');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User");
-const taskRoute = require("./routes/task");
-const authRoute = require("./routes/auth");
+const taskRoute = require("./routes/taskRoutes");
+const authRoute = require("./routes/authRoutes");
 const homeRoute = require("./routes/home");
 
-const port = 8000 || process.env.PORT;
 dotenv.config();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -58,6 +59,4 @@ app.use("/api/task/", taskRoute);
 app.use("/api/auth/", authRoute);
 app.use("/api/home/", homeRoute);
 
-app.listen(port, () => {
-    console.log(`Server listening on port: ${port}`);
-});
+module.exports = app;
