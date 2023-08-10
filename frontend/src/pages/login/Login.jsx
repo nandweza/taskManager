@@ -2,21 +2,38 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 import HomeNavbar from '../../components/homeNavbar/HomeNavbar';
+import axios from 'axios';
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const loginUser = async (username, password) => {
+        try {
+          const response = await axios.post('http://127.0.0.1:8000/api/auth/login', {
+            username,
+            password,
+          });
+          return response.data;
+        } catch (error) {
+          throw error.response.data;
+        }
+      };
+      
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        onLogin(username, password);
+        try {
+            const token = await loginUser(username, password);
+            localStorage.setItem('token', token);
 
-        setUsername('');
-        setPassword('');
-
-        navigate('/task');
+            onLogin();
+            navigate('/task');
+        } catch(err) {
+            console.log(err);
+        }
     };
 
     return (

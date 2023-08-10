@@ -1,8 +1,9 @@
 const Task = require("../models/Task");
 
 exports.createTask = async (req, res) => {
+    console.log('req.user:', req.user);
     if (req.user) {
-        const newTask = new Task(req.body);
+        const newTask = new Task({ ...req.body, user: req.user._id });
 
         try {
             const savedTask = await newTask.save();

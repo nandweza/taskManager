@@ -3,6 +3,7 @@ import './createTask.css';
 import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import axios from 'axios';
 
 const CreateTask = (props) => {
     const [task, setTask] = useState({
@@ -22,13 +23,25 @@ const CreateTask = (props) => {
         });
     }
 
-    function submitTask(event) {
-        props.onAdd(task);
-        setTask({
-            title: '',
-            content: ''
-        });
+    async function submitTask(event) {
+        // props.onAdd(task);
+        // setTask({
+        //     title: '',
+        //     content: ''
+        // });
         event.preventDefault();
+
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/task/', task);
+
+            props.onAdd(response.data);
+            setTask({
+                title: '',
+                content: ''
+            })
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     function expand() {

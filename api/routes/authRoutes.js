@@ -12,8 +12,12 @@ router.route("/register")
 router.route("/login")
 .post(authController.loginUser);
 
-//Logout route
-router.route("/logout")
-.get(authController.logoutUser);
+//Reset Password Route
+router.route("/reset-password")
+.post(authController.resetPassword);
+
+//Update profile
+router.route("/update-profile")
+.post(authController.updateProfile);
 
 module.exports = router;

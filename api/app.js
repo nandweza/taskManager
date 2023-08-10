@@ -5,13 +5,13 @@ const app = express();
 const cors = require('cors');
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const session = require("express-session");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User");
+const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
+const { secretKey } = require('./config/keys');
 const taskRoute = require("./routes/taskRoutes");
 const authRoute = require("./routes/authRoutes");
-const homeRoute = require("./routes/home");
+const profileRoute = require("./routes/profileRoutes");
 
 dotenv.config();
 
@@ -24,39 +24,54 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(session({
-    secret: "My little secret",
-    resave: false,
-    saveUninitialized: false
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
 mongoose.connect("mongodb://localhost:27017/taskManagerDB", {
     useNewUrlParser: true
 })
 .then(() => console.log("DB Connected Successfully"))
 .catch((err) => console.log(err));
 
+
 //Passport configuration
-passport.use(User.createStrategy());
+app.use(passport.initialize());
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: secretKey,
+};
+
+passport.use(
+    new JwtStrategy(jwtOptions, async (payload, done) => {
+      try {
+        const user = await User.findById(payload.id);
+  
+        if (user) {
+          done(null, user);
+        } else {
+          done(null, false);
+        }
+      } catch (error) {
+        done(error, false);
+      }
+    })
+);
+
+app.use("/api/auth/", authRoute);
+
+app.use("/api/profile/", profileRoute);
+app.use("/api/task/", taskRoute);
+
+// 404 route
+app.use((req, res, next) => {
+    res.status(404).json({ message: 'Route not found' });
 });
-
-passport.deserializeUser(async (id, done) => {
-    try {
-        const user = await User.findById(id);
-        done(null, user);
-    } catch(err) {
-        done(err, null);
+  
+// Error handler
+app.use((err, req, res, next) => {
+    console.error(err);
+  
+    if (!res.headersSent) {
+        res.status(500).json({ message: 'An error occurred' });
     }
 });
-
-app.use("/api/task/", taskRoute);
-app.use("/api/auth/", authRoute);
-app.use("/api/home/", homeRoute);
 
 module.exports = app;
